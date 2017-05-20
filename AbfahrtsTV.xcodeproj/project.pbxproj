@@ -11,6 +11,9 @@
 		3965FA771ED065250004EF55 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3965FA761ED065250004EF55 /* ViewController.swift */; };
 		3965FA7A1ED065250004EF55 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3965FA781ED065250004EF55 /* Main.storyboard */; };
 		3965FA7C1ED065250004EF55 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3965FA7B1ED065250004EF55 /* Assets.xcassets */; };
+		3965FA861ED0677C0004EF55 /* DVB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965FA841ED0677C0004EF55 /* DVB.framework */; };
+		3965FA871ED0677C0004EF55 /* Marshal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965FA851ED0677C0004EF55 /* Marshal.framework */; };
+		3965FA8A1ED070410004EF55 /* gausskrueger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3965FA891ED070410004EF55 /* gausskrueger.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		3965FA791ED065250004EF55 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3965FA7B1ED065250004EF55 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3965FA7D1ED065250004EF55 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3965FA841ED0677C0004EF55 /* DVB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DVB.framework; path = Carthage/Build/tvOS/DVB.framework; sourceTree = "<group>"; };
+		3965FA851ED0677C0004EF55 /* Marshal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Marshal.framework; path = Carthage/Build/tvOS/Marshal.framework; sourceTree = "<group>"; };
+		3965FA891ED070410004EF55 /* gausskrueger.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gausskrueger.framework; path = Carthage/Build/tvOS/gausskrueger.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -27,6 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3965FA861ED0677C0004EF55 /* DVB.framework in Frameworks */,
+				3965FA871ED0677C0004EF55 /* Marshal.framework in Frameworks */,
+				3965FA8A1ED070410004EF55 /* gausskrueger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -38,6 +47,7 @@
 			children = (
 				3965FA731ED065250004EF55 /* AbfahrtsTV */,
 				3965FA721ED065250004EF55 /* Products */,
+				3965FA831ED0677B0004EF55 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +71,16 @@
 			path = AbfahrtsTV;
 			sourceTree = "<group>";
 		};
+		3965FA831ED0677B0004EF55 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3965FA891ED070410004EF55 /* gausskrueger.framework */,
+				3965FA841ED0677C0004EF55 /* DVB.framework */,
+				3965FA851ED0677C0004EF55 /* Marshal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,6 +91,7 @@
 				3965FA6D1ED065250004EF55 /* Sources */,
 				3965FA6E1ED065250004EF55 /* Frameworks */,
 				3965FA6F1ED065250004EF55 /* Resources */,
+				3965FA881ED067800004EF55 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -127,6 +148,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3965FA881ED067800004EF55 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/tvOS/Marshal.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/gausskrueger.framework",
+				"$(SRCROOT)/Carthage/Build/tvOS/DVB.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3965FA6D1ED065250004EF55 /* Sources */ = {
@@ -251,6 +292,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = HU85FER47E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = AbfahrtsTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kilian.AbfahrtsTV;
@@ -265,6 +310,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = HU85FER47E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
 				INFOPLIST_FILE = AbfahrtsTV/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.kilian.AbfahrtsTV;
