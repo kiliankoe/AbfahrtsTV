@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             case .failure(_):
                 break
             case .success(let response):
-                self.stopButton.titleLabel?.text = response.stopName
+                self.stopButton.setTitle(response.stopName, for: .normal)
                 self.departures = response.departures
                 self.departureTable.reloadData()
             }
